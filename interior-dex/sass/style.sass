@@ -71,6 +71,14 @@ $second-color: #CDA274
 
 /*   Nav   */
 
+@mixin menu-icon
+  transition: 0.6s
+  font-size: 30px
+  color: white
+  margin: 0 20px 0 0
+  &:hover
+    color: $second-color
+
 nav
   position: fixed
   display: flex
@@ -106,15 +114,11 @@ nav
     display: flex
     & .menu__actions-info
       display: flex
-      @mixin menu-icon
-        height: 25px
-        width: 25px
+      align-items: center
       & .menu__bag
         @include menu-icon
-        background: url(../img/bag.png) 100% / contain no-repeat
       & .menu__search
         @include menu-icon
-        background: url(../img/search.png) 100% / contain no-repeat
     & .menu__actions-btn
       height: 50px
       width: 150px
@@ -146,10 +150,9 @@ nav
     width: 100px
     background-color: $second-color
     & .info-btn__btn
-      height: 20px
-      width: 20px
       margin: auto auto
-      background: url(../img/white-menu.jpg) 100% / contain no-repeat
+      color: white
+      font-size: 20px
 
 header
   height: 950px
