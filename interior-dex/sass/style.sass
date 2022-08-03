@@ -33,6 +33,7 @@ html, body
   -ms-text-size-adjust: 100%
   -moz-text-size-adjust: 100%
   -webkit-text-size-adjust: 100%
+  color: #616161
 
 input, button, textarea
   font-family: inherit
@@ -68,16 +69,19 @@ h1, h2, h3, h4, h5, h6
 
 /*  content  */
 $second-color: #CDA274
+$second-color-transparent: #cda2748f
 
 /*   Nav   */
 
 @mixin menu-icon
-  transition: 0.5s
-  font-size: 24px
-  color: white
-  cursor: pointer
+  &::before
+    transition: 0.5s
+    font-size: 24px
+    color: white
+    cursor: pointer
   &:hover
-    color: $second-color
+    &::before
+      color: $second-color
 
 nav
   position: fixed
@@ -132,8 +136,8 @@ nav
             color: white
             font-size: 12px
             line-height: 17px
+            @include menu-icon
             &::before
-              @include menu-icon
               position: absolute
               top: -5px
               z-index: -1
@@ -155,28 +159,37 @@ nav
     & .menu__actions-btn
       height: 48px
       width: 146px
-      transition: 0.5s
-      background-color: $second-color
-      &:hover
+      transition: all ease .5s
+      & a
+        position: relative
+        display: flex
+        justify-content: center
+        height: inherit
+        width: inherit
+        box-sizing: border-box
+        background-color: $second-color
+        border: 1px solid $second-color
         &::before
-          position: relative
+          transition: all ease .5s
+          content: ""
+          transform: scale(0)
+          position: absolute
           top: 0
           left: 0
           right: 0
           bottom: 0
           background-color: #343047
-          transform: scale(0)
-        & a > p
-          color: $second-color
-      & a
-        display: flex
-        justify-content: center
-        height: 100%
-        width: 100%
+        &:hover
+          &::before
+            transform: scale(1)
+          & p
+            color: $second-color
         & p
+          transition: all ease .5s
           font-size: 1.2rem
           color: white
           margin: auto 0
+          z-index: 1
   & .info-btn
     display: flex
     height: 100px
@@ -186,6 +199,7 @@ nav
       margin: auto auto
       color: white
       font-size: 20px
+      cursor: pointer
 
 header
   height: 950px
@@ -198,6 +212,7 @@ header
       background: url(../img/hero1.jpg) center / cover no-repeat
 
 .feature
+  padding: 0 0 20px
   & .feature-container
     display: flex
     width: 1120px
@@ -208,6 +223,7 @@ header
       max-width: 33.333333%
       padding: 0 15px
       & .feature-card__wrapper
+        position: relative
         display: flex
         flex-direction: column
         box-sizing: border-box
@@ -215,10 +231,29 @@ header
         align-items: center
         box-shadow: 0 0 30px rgb(0 0 0 / 20%)
         padding: 50px 26px 60px
-        &.second-card
-          background: url(../img/feature1.jpg)100% / cover no-repeat
+        transition: all ease .5s
+        &::before
+          content: ""
+          position: absolute
+          top: 0
+          left: 0
+          height: 100%
+          transition: .5s
+          background: url(../img/feature2.jpg) 100% / cover no-repeat
+          opacity: 0
+        &::after
+          content: ""
+          position: absolute
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          transform: rotateY(90deg)
+          transition: all ease .5s
+          background-color: $second-color-transparent
         & div
           margin: 0 0 30px 0
+          z-index: 1
         & .card__flaticon
           & img
             height: 60px
@@ -226,19 +261,71 @@ header
         & .card__title
           & h3
             font-size: 2rem
+            color: #1c1c1c
         & .card__description
           & p
             text-align: center
             font-size: 1rem
+            line-height: 1.8rem
+            // color: gray
         & .card__button
           margin: 0 0 -10px 0
           height: 48px
           width: 146px
-        & a
-          display: flex
-          height: 100%
-          width: 100%
-          border: 1px solid $second-color
-          & span
-            margin: auto auto
-            color: black
+          & a
+            position: relative
+            display: flex
+            height: inherit
+            width: inherit
+            border: 1px solid $second-color
+            &::before
+              content: ""
+              position: absolute
+              height: 48px
+              width: 48px
+              z-index: -1
+              background: url(../img/button.jpg)
+              transition: all ease .5s
+            &::after
+              content: ""
+              position: absolute
+              height: 48px
+              width: 0
+              z-index: -1
+              background: url(../img/button1.png)
+              transition: all ease .5s
+            & span
+              margin: auto auto
+              color: black
+        &:hover
+          color: white
+          &::before
+            width: 100%
+            opacity: 1
+          &::after
+            transform: rotateY(0deg)
+          & .card__icon
+            & img
+              filter: brightness(0) invert(1)
+          & .card__button
+            & a
+              &::after
+                width: 100%
+        &.active
+          color: white
+          &::before
+            background: url(../img/feature1.jpg)100% / cover no-repeat
+            width: 100%
+            opacity: 1
+          &::after
+            transform: rotateY(0deg)
+          & .card__icon
+            & img
+              filter: brightness(0) invert(1)
+          & .card__title
+            & h3
+              color: white
+          & .card__button
+            & a
+              &::after
+                width: 100%
