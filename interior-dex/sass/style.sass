@@ -1,4 +1,5 @@
 /*Import Font style z google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap')
 
 /* Deleting the default format from web browser */
 *
@@ -66,10 +67,12 @@ img
 h1, h2, h3, h4, h5, h6
   font-size: inherit
   font-weight: inherit
+  font-family: 'Questrial', sans-serif
 
 /*  content  */
-$second-color: #CDA274
-$second-color-transparent: #cda2748f
+$first-color: #CDA274
+$first-color-transparent: #cda274a3
+$second-color: #222222
 
 /*   Nav   */
 
@@ -81,14 +84,21 @@ $second-color-transparent: #cda2748f
     cursor: pointer
   &:hover
     &::before
-      color: $second-color
+      color: $first-color
 
 nav
-  position: fixed
+  position: relative
+  margin: 0 0 -101px
   display: flex
   justify-content: space-between
   width: 100%
-  border: 1px solid gray
+  border-bottom: 1px solid gray
+  z-index: 30
+  &.sticky
+    position: fixed
+    margin: 0 0 -1px
+    background-color: $second-color
+    transition: all ease .5s
   & .logo
     height: 100px
     width: 100px
@@ -97,13 +107,13 @@ nav
     display: flex
     justify-content: space-between
     align-items: center
-    & .menu__list
+    &__list
       & ul
         & li
           margin: 0 20px
           float: left
           & a
-            transition: 0.5s
+            transition: all ease .5s
             color: white
             text-transform: uppercase
             font-size: 1rem
@@ -113,89 +123,90 @@ nav
               top: 1px
               left: 3px
             &:hover
-              color: $second-color
-  & .menu__actions
-    display: flex
-    padding: 0 0 0 20px
-    & .menu__actions-info
+              color: $first-color
+    &__actions
       display: flex
-      align-items: center
-      & .menu__bag
-        position: relative
-        width: 65px
-        z-index: 1
-        & .flaticon-bag
-          text-align: center
-          & span
-            position: absolute
-            height: 17px
-            width: 17px
-            bottom: -12px
-            background-color: $second-color
-            border-radius: 50%
-            color: white
-            font-size: 12px
-            line-height: 17px
-            @include menu-icon
-            &::before
-              position: absolute
-              top: -5px
-              z-index: -1
-            &::after
-              content: ""
-              position: absolute
-              z-index: -1
-              right: -32px
-              bottom: 1px
-              width: 3px
-              height: 25px
-              background-color: #9A99A6
-      & .flaticon-search
-        @include menu-icon
-        position: relative
-        width: 30px
-        margin: 0 20px 0 0
-        bottom: 2px
-    & .menu__actions-btn
-      height: 48px
-      width: 146px
-      transition: all ease .5s
-      & a
-        position: relative
+      padding: 0 0 0 20px
+      &__info
         display: flex
-        justify-content: center
-        height: inherit
-        width: inherit
-        box-sizing: border-box
-        background-color: $second-color
-        border: 1px solid $second-color
-        &::before
-          transition: all ease .5s
-          content: ""
-          transform: scale(0)
-          position: absolute
-          top: 0
-          left: 0
-          right: 0
-          bottom: 0
-          background-color: #343047
-        &:hover
-          &::before
-            transform: scale(1)
-          & p
-            color: $second-color
-        & p
-          transition: all ease .5s
-          font-size: 1.2rem
-          color: white
-          margin: auto 0
+        align-items: center
+        & .menu-bag
+          position: relative
+          width: 65px
           z-index: 1
+          & .flaticon-bag
+            text-align: center
+            & span
+              position: absolute
+              height: 17px
+              width: 17px
+              bottom: -12px
+              background-color: $first-color
+              border-radius: 50%
+              color: white
+              font-size: 12px
+              line-height: 17px
+              @include menu-icon
+              &::before
+                position: absolute
+                top: -5px
+                z-index: -1
+              &::after
+                content: ""
+                position: absolute
+                z-index: -1
+                right: -32px
+                bottom: 1px
+                width: 3px
+                height: 25px
+                background-color: #9A99A6
+        & .flaticon-search
+          @include menu-icon
+          position: relative
+          width: 30px
+          margin: 0 20px 0 0
+          bottom: 2px
+      &__btn
+        margin: 0 20px 0 0
+        height: 48px
+        width: 146px
+        transition: all ease .5s
+        & a
+          position: relative
+          display: flex
+          justify-content: center
+          height: inherit
+          width: inherit
+          box-sizing: border-box
+          background-color: $first-color
+          border: 1px solid $first-color
+          &::before
+            transition: all ease .5s
+            content: ""
+            transform: scale(0)
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            background-color: #343047
+          &:hover
+            &::before
+              transform: scale(1)
+            & p
+              color: $first-color
+          & p
+            transition: all ease .5s
+            font-size: 1.2rem
+            color: white
+            margin: auto 0
+            z-index: 1
   & .info-btn
     display: flex
     height: 100px
     width: 100px
-    background-color: $second-color
-    & .info-btn__btn
+    background-color: $first-color
+    &__btn
       margin: auto auto
       color: white
       font-size: 20px
@@ -206,23 +217,24 @@ header
   & .slider
     height: 100%
     width: 100%
-    & .slider__photo
+    &__photo
       height: 100%
       width: 100%
       background: url(../img/hero1.jpg) center / cover no-repeat
 
 .feature
   padding: 0 0 20px
-  & .feature-container
+  &__cards-container
     display: flex
     width: 1120px
     margin: 0 auto
     margin-top: -100px
-    & .feature-card
+    &__card-box
       flex: 0 0 33.333333%
       max-width: 33.333333%
       padding: 0 15px
-      & .feature-card__wrapper
+
+      & .card
         position: relative
         display: flex
         flex-direction: column
@@ -231,7 +243,7 @@ header
         align-items: center
         box-shadow: 0 0 30px rgb(0 0 0 / 20%)
         padding: 50px 26px 60px
-        transition: all ease .5s
+        transition: all ease .9s
         &::before
           content: ""
           position: absolute
@@ -250,25 +262,24 @@ header
           bottom: 0
           transform: rotateY(90deg)
           transition: all ease .5s
-          background-color: $second-color-transparent
+          background-color: $first-color-transparent
         & div
           margin: 0 0 30px 0
           z-index: 1
-        & .card__flaticon
+        &__flaticon
           & img
             height: 60px
             width: 60px
-        & .card__title
+        &__title
           & h3
             font-size: 2rem
             color: #1c1c1c
-        & .card__description
+        &__description
           & p
             text-align: center
             font-size: 1rem
             line-height: 1.8rem
-            // color: gray
-        & .card__button
+        &__button
           margin: 0 0 -10px 0
           height: 48px
           width: 146px
@@ -277,7 +288,7 @@ header
             display: flex
             height: inherit
             width: inherit
-            border: 1px solid $second-color
+            border: 1px solid $first-color
             &::before
               content: ""
               position: absolute
@@ -307,11 +318,14 @@ header
           & .card__icon
             & img
               filter: brightness(0) invert(1)
+          &  .card__title
+            & h3
+              color: white
           & .card__button
             & a
               &::after
                 width: 100%
-        &.active
+        &--active
           color: white
           &::before
             background: url(../img/feature1.jpg)100% / cover no-repeat
@@ -328,4 +342,129 @@ header
           & .card__button
             & a
               &::after
+                width: 100%
+  &__about
+    margin: 100px 0 0
+    & .feature-container
+      margin: 0 auto
+      display: flex
+      flex-flow: row nowrap
+      justify-content: space-between
+      width: 1120px
+      padding: 0 15px
+      &__img-area
+        max-width: 50%
+        position: relative
+        & img.about-shape
+          position: absolute
+          top: -20px
+          left: -30px
+          width: 80px
+          z-index: -1
+        & .img-box
+          // & img
+        & .text-box
+          position: absolute
+          display: flex
+          justify-content: space-between
+          flex-direction: column
+          height: 200px
+          width: 200px
+          background-color: $second-color
+          bottom: 45px
+          left: -30px
+          padding: 30px
+          &__icon
+            height: 50px
+            width: 50px
+            background: url(../img/icont1.png) 100% / contain no-repeat
+          &__text
+            font-size: 1.4rem
+            color: white
+            & big
+              font-size: 3.4rem
+              color: $first-color
+      &__text-area
+        max-width: 50%
+        &__title-box
+          position: relative
+          padding: 10px 0 0 40px
+          & h3
+            position: absolute
+            right: 156px
+            top: -29px
+            font-size: 200px
+            color: #53535325
+            &::before
+              position: absolute
+              bottom: 43px
+              left: 15px
+              content: ""
+              height: 122px
+              width: 2px
+              background-color: $first-color
+          & p
+            font-size: 1.2rem
+            color: $first-color
+            margin: 0 0 12px 0
+          & h2
+            font-size: 3rem
+            color: black
+            & span
+              color: $first-color
+        &__description-box
+          padding: 20px
+          & span
+            font-size: 1.1rem
+            line-height: 30px
+        &__list-box
+          padding: 15px
+          display: flex
+          & .list-column
+            & p
+              margin: 0 0 20px 0
+              float: left
+              font-size: 1.1rem
+              & .square
+                display: inline-block
+                height: 16px
+                width: 16px
+                box-sizing: border-box
+                border: 2px solid $first-color
+                margin-right: 10px
+                &::before
+                  position: relative
+                  content: ""
+                  display: block
+                  top: 50%
+                  left: 50%
+                  box-sizing: border-box
+                  height: 6px
+                  width: 6px
+                  border: 3px solid $first-color
+                  transform: translate(-50%, -50%)
+        &__button-box
+          padding: 15px 20px
+          & a
+            position: relative
+            display: flex
+            height: 50px
+            width: 150px
+            box-sizing: border-box
+            border: 1px solid $first-color
+            & span
+              margin: auto auto
+              color: black
+            &::before
+              content: ""
+              position: absolute
+              top: 0
+              left: 0
+              height: 48px
+              width: 48px
+              z-index: -1
+              background: url(../img/button.jpg)
+              transition: all ease .5s
+            &:hover
+              &::before
                 width: 100%

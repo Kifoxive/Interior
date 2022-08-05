@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="css/iconsfont.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <nav>
+  <script src="./js/script.js"></script>
+  <body onscroll="makeNavSticky(document.getElementById('mainNav'))">
+    <nav id="mainNav">
       <div class="logo"></div>
       <div class="menu">
         <div class="menu__list">
@@ -26,15 +27,15 @@
           </ul>
         </div>
         <div class="menu__actions">
-          <div class="menu__actions-info">
-            <div class="menu__bag">
+          <div class="menu__actions__info">
+            <div class="menu-bag">
               <i class="flaticon-bag" aria-hidden="true">
                 <span class="fa fa-suitcase">0</span>
               </i>
             </div>
             <i class="flaticon-search fa fa-search" aria-hidden="true"></i>
           </div>
-          <div class="menu__actions-btn">
+          <div class="menu__actions__btn">
             <a href="/"><p>Get a Quote</p></a>
           </div>
         </div>
@@ -50,11 +51,50 @@
     </header>
 
     <div class="feature">
-      <div class="feature-container">
-        <div class="feature-card">
-          <div class="feature-card__wrapper">
+      <div class="feature__cards-container">
+
+
+        <div class="feature__cards-container__card-box">
+          <div class="card">
             <div class="card__icon">
-              <img src="./img/icon2.png" alt="building" />
+              <img src="./img/icon2.png" alt="room" />
+            </div>
+            <div class="card__title"><h3>Architecture</h3></div>
+            <div class="card__description">
+              <p>
+                Progressively impact 24/365 relationships transparent
+                opportunitie. Monotonectally cooperative outside the box
+                thinking all an open-source information
+              </p>
+            </div>
+            <div class="card__button">
+              <a href="/"><span>Read More</span></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feature__cards-container__card-box">
+          <div class="card card--active">
+            <div class="card__icon">
+              <img src="./img/icon1.png" alt="room" />
+            </div>
+            <div class="card__title"><h3>Architecture</h3></div>
+            <div class="card__description">
+              <p>
+                Progressively impact 24/365 relationships transparent
+                opportunitie. Monotonectally cooperative outside the box
+                thinking all an open-source information
+              </p>
+            </div>
+            <div class="card__button">
+              <a href="/"><span>Read More</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="feature__cards-container__card-box">
+          <div class="card">
+            <div class="card__icon">
+              <img src="./img/icon3.png" alt="room" />
             </div>
             <div class="card__title"><h3>Architecture</h3></div>
             <div class="card__description">
@@ -70,40 +110,57 @@
           </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-card__wrapper active">
-            <div class="card__icon">
-              <img src="./img/icon1.png" alt="building" />
+      </div>
+    </div>
+
+      <div class="feature__about">
+        <div class="feature-container">
+          <div class="feature-container__img-area">
+            <img
+              class="about-shape"
+              src="./img/shape1.png"
+              alt="shape square decoration"
+            />
+            <div class="img-box">
+              <img src="./img/about-img.jpg" alt="man walking near home" />
             </div>
-            <div class="card__title"><h3>Architecture</h3></div>
-            <div class="card__description">
-              <p>
-                Progressively impact 24/365 relationships transparent
-                opportunitie. Monotonectally cooperative outside the box
-                thinking all an open-source information
-              </p>
-            </div>
-            <div class="card__button">
-              <a href="/"><span>Read More</span></a>
+            <div class="text-box">
+              <div class="text-box__icon"></div>
+              <div class="text-box__text">
+                <big>10 </big> Years of Experiences
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="feature-card">
-          <div class="feature-card__wrapper">
-            <div class="card__icon">
-              <img src="./img/icon3.png " alt="building" />
+          <div class="feature-container__text-area">
+            <div class="feature-container__text-area__title-box">
+              <h3>DEX</h3>
+              <p>ABOUT US</p>
+              <h2>
+                Simple Minimal for Modern home <span>Exterior design</span>
+              </h2>
             </div>
-            <div class="card__title"><h3>Architecture</h3></div>
-            <div class="card__description">
-              <p>
-                Progressively impact 24/365 relationships transparent
-                opportunitie. Monotonectally cooperative outside the box
-                thinking all an open-source information
-              </p>
+            <div class="feature-container__text-area__description-box">
+              <span
+                >Competently visualize error-free metrics before client-focused
+                bandwidth. Interactively re-engineer intuitive core competencies
+                via 24/365 services. Dynamically underwhelm inexpensive</span
+              >
             </div>
-            <div class="card__button">
-              <a href="/"><span>Read More</span></a>
+            <div class="feature-container__text-area__list-box">
+              <div class="list-column">
+                <p><span class="square"></span>Retail Residental Projects</p>
+                <p><span class="square"></span>Electrical Interior Planing</p>
+                <p><span class="square"></span>Best Communication</p>
+              </div>
+              <div class="list-column">
+                <p><span class="square"></span>Modern Exterior Design</p>
+                <p><span class="square"></span>Interior Lighting Plan<</p>
+                <p><span class="square"></span>Colour Design Services</p>
+              </div>
+            </div>
+            <div class="feature-container__text-area__button-box">
+              <a href="/"><span>READ MORE</span></a>
             </div>
           </div>
         </div>
