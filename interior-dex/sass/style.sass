@@ -72,13 +72,13 @@ h1, h2, h3, h4, h5, h6
 /*  content  */
 $first-color: #CDA274
 $first-color-transparent: #cda274a3
-$second-color: #222222
+$second-color: #272727
 
 /*   Nav   */
 
 @mixin menu-icon
   &::before
-    transition: 0.5s
+    transition: all ease .5s
     font-size: 24px
     color: white
     cursor: pointer
@@ -226,7 +226,7 @@ header
   padding: 0 0 20px
   &__cards-container
     display: flex
-    width: 1120px
+    width: 1200px
     margin: 0 auto
     margin-top: -100px
     &__card-box
@@ -344,13 +344,13 @@ header
               &::after
                 width: 100%
   &__about
-    margin: 100px 0 0
+    margin: 100px 0 100px
     & .feature-container
       margin: 0 auto
       display: flex
       flex-flow: row nowrap
       justify-content: space-between
-      width: 1120px
+      width: 1200px
       padding: 0 15px
       &__img-area
         max-width: 50%
@@ -388,10 +388,10 @@ header
         max-width: 50%
         &__title-box
           position: relative
-          padding: 10px 0 0 40px
+          padding: 10px 0 0 30px
           & h3
             position: absolute
-            right: 156px
+            right: 196px
             top: -29px
             font-size: 200px
             color: #53535325
@@ -415,8 +415,8 @@ header
         &__description-box
           padding: 20px
           & span
-            font-size: 1.1rem
-            line-height: 30px
+            font-size: 1.2rem
+            line-height: 1.8rem
         &__list-box
           padding: 15px
           display: flex
@@ -468,3 +468,115 @@ header
             &:hover
               &::before
                 width: 100%
+
+.service
+  background-color: $second-color
+  margin: 0 0 100px
+  &__container
+    display: flex
+    flex-flow: row wrap
+    width: 1200px
+    margin: 0 auto
+    padding: 100px 0 20px
+    & .single-service-block
+      flex: 0 0 33.333333%
+      max-width: 33.333333%
+      margin: 0 0 30px
+      padding: 0 15px
+      &__box
+        position: relative
+        height: 243px
+        overflow: hidden
+        clip-path: polygon(0% 0%, 100% 0%, 100% 89%, 91% 100%, 0% 100%)
+        border: 1px solid #594C3E
+        transition: all ease .5s
+        &::before
+          content: ""
+          position: absolute
+          z-index: 1
+          right: 2px
+          bottom: -25px
+          width: 1px
+          height: 100px
+          background: #594C3E
+          transform: rotate(48deg)
+        &__content
+          position: relative
+          top: 0
+          padding: 10px 30px 0
+          transition: all ease .5s
+          & div
+            margin: 20px 0 0
+          & .service-icon
+            position: relative
+            top: 0
+            transition: all ease .5s
+            & img
+              height: 50px
+              width: 50px
+          & .service-title
+            margin-bottom: 5px
+            & h3
+              & a
+                font-size: 1.6rem
+                color: white
+                transition: all ease .5s
+                &:hover
+                  color: $first-color
+          & .service-description
+            & p
+              font-size: 1.1rem
+              line-height: 1.8rem
+              color: #999999
+              & span
+                opacity: 0
+          & .service-button
+            & a
+              font-size: 1rem
+              color: $first-color
+              & span
+                position: relative
+                top: 2px
+                margin-left: 10px
+                font-size: 1.3rem
+        &:hover
+          clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 91% 100%, 0% 100%)
+          border-color: $first-color
+          &::before
+            opacity: 0
+          & .single-service-block__box__content
+            top: -70px
+            & .service-icon
+              top: -35px
+        &--active
+          border: none
+          & .title-box
+            padding: 10px 0 10px 10px
+            position: relative
+            & h3
+              position: absolute
+              left: -16px
+              top: -29px
+              font-size: 200px
+              color: #53535325
+              &::before
+                position: absolute
+                bottom: 43px
+                left: 15px
+                content: ""
+                height: 122px
+                width: 2px
+                background-color: $first-color
+            & p
+              font-size: 1.2rem
+              color: $first-color
+            & h2
+              font-size: 3rem
+              color: white
+              & span
+                color: $first-color
+          & .description-box
+            margin: 10px 0
+            & span
+              font-size: 1.2rem
+              line-height: 1.8rem
